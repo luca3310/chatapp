@@ -1,24 +1,5 @@
-import {
-  auth,
-  googleAuthProvider,
-  firestore,
-  postToJSON,
-} from "../lib/firebase";
-import {
-  query,
-  collection,
-  where,
-  getDocs,
-  limit,
-  orderBy,
-  doc,
-  getFirestore,
-  setDoc,
-  serverTimestamp,
-  onSnapshot,
-  addDoc,
-  deleteDoc,
-} from "firebase/firestore";
+import { auth } from "../lib/firebase";
+import { doc, getFirestore, deleteDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Comments({ posts }) {

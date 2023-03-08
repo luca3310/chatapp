@@ -1,27 +1,15 @@
+import { auth } from "../lib/firebase";
 import {
-  auth,
-  googleAuthProvider,
-  firestore,
-  postToJSON,
-} from "../lib/firebase";
-import {
-  query,
   collection,
-  where,
-  getDocs,
-  limit,
-  orderBy,
   doc,
   getFirestore,
   setDoc,
   serverTimestamp,
   onSnapshot,
-  addDoc,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Comments from "../components/Comments";
-import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useState, useEffect } from "react";
 
 export default function Home({ posts }) {
