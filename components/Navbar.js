@@ -20,7 +20,7 @@ export default function Navbar() {
 
     return (
       <button className="text-lg" onClick={signInWithGoogle}>
-        <img /> Sign in with Google
+        Sign in with Google
       </button>
     );
   }
