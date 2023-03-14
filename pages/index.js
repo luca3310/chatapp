@@ -6,6 +6,8 @@ import {
   setDoc,
   serverTimestamp,
   onSnapshot,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
@@ -16,9 +18,10 @@ export default function Home({ posts }) {
   const [technos, setTechnos] = useState([]);
   const firestore = getFirestore();
   const colRef = collection(firestore, "posts");
+  const q = query(colRef, orderBy("createdAt", "desc"));
 
   useEffect(() => {
-    onSnapshot(colRef, (snapshot) => {
+    onSnapshot(q, (snapshot) => {
       getTechnos(snapshot);
       console.log(snapshot);
     });
