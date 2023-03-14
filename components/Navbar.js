@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 export default function Navbar() {
   const [user] = useAuthState(auth);
   return (
-    <nav className="fixed h-24 w-screen bg-black text-white flex justify-center items-center">
+    <nav className="h-24 shadow bg-[#C0DFD9] text-[#545B5A] flex justify-center items-center">
       <div className="w-5/6 flex justify-between items-center">
         <h1 className="text-3xl hover:cursor-pointer">BA</h1>
         {user ? <SignOutButton /> : <SignInButton />}

@@ -54,16 +54,22 @@ export default function Home({ posts }) {
       displayName: user.displayName,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
+      photo: auth.currentUser.photoURL,
     };
     await setDoc(ref, data);
     reset({ content: "" });
   };
 
   return (
-    <div className="flex flex-col gap-5 justify-center w-screen h-screen items-center">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <fieldset>
+    <div className="flex flex-col gap-5 justify-center min-h-screen py-14 items-center bg-gradient-to-b from-[#C0DFD9] to-[#E9ECE6]">
+      <form
+        className="py-10 flex flex-col justify-center items-end rounded text-[#545B5A] w-1/2"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <fieldset className="w-[100%]">
           <input
+            placeholder="comment here..."
+            className="w-[100%] bg-transparent border-b-2 focus:border-opacity-100 border-[#545B5A] border-opacity-30 outline-none"
             type="text"
             {...register("content", {
               required: { value: true, message: "content is required" },
@@ -72,16 +78,21 @@ export default function Home({ posts }) {
             aria-invalid={errors.content ? "true" : "false"}
           />
           {errors.content && (
-            <p className="text-white">{errors.content?.message}</p>
+            <p className="text-red-500">{errors.content?.message}</p>
           )}
-          <label>content</label>
         </fieldset>
 
-        <button type="submit" disabled={!isDirty || !isValid}>
-          Save Changes
+        <button
+          className="opacity-50 hover:opacity-100 hover:cursor-pointer"
+          type="submit"
+          disabled={!isDirty || !isValid}
+        >
+          Comment
         </button>
       </form>
-      <Comments posts={technos} />
+      <div className="w-1/2 flex flex-col gap-10">
+        <Comments posts={technos} />
+      </div>
     </div>
   );
 }
